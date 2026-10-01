@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Document</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card-bg: #ffffff;
+    --text-primary: #1a1d23;
+    --text-secondary: #6b7280;
+    --accent: #16a34a;
+    --accent-soft: #dcfce7;
+    --button-bg: #111827;
+    --button-text: #ffffff;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 360px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 40px 28px 32px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  .icon-wrap {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-wrap svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+  }
+
+  p.subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    margin: 0 0 28px;
+  }
+
+  button.primary {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--button-text);
+    background: var(--button-bg);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.15s ease, transform 0.1s ease;
+  }
+
+  button.primary:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d0f12;
+      --card-bg: #1a1d23;
+      --text-primary: #f5f6f8;
+      --text-secondary: #9ca3af;
+      --accent: #4ade80;
+      --accent-soft: #14321f;
+      --button-bg: #f5f6f8;
+      --button-text: #111827;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h1>All Done!</h1>
+    <p class="subtitle">Your action was completed successfully. You can safely close this screen now.</p>
+    <button class="primary" onclick="closeWebView()">Done</button>
+  </div>
+
+  <script>
+  function closeWebView() {
+    if (window.FlutterBridge) {
+      // JS Channel Contract (what the web app should post):
+  FlutterChannel.postMessage(JSON.stringify({ mobileNumber: "XXXXXXXXXX", accessToken: "eyJ..." }))
+    }
+  }
+  </script>
+
+</body>
+</html>
